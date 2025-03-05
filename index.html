@@ -1,30 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<style>
-		*{
-			padding: 0;
-			margin: 0;
-			box-sizing: border-box;
-		}
-		body{
-			height: 100vh;
-			width: 100vw;
-			background: #707070;
-			cursor: move !important;
-		}
-		@supports not (cursor: url(cursor.svg), auto){
-                        body {
-				background: #ff0000;
-			}
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Cursor Example</title>
+    <style>
+    *{
+      padding: 1vw 2vw;
+      margin: 0;
+      box-sizing: border-box;
+      border: 1px solid #000
+    }
+    body{
+      display: flex;
+      flex-direction: column;
+      gap: 2vw;
+      padding: 4vw 6vw;
+      background: hsla(235, 0%, 90%, 1);
+      border: 1px solid #ff0000
+    }
+        /* CSS for custom cursors */
+        .custom-cursor-1 {
+            cursor: url('cursor1.png'), auto;
+        }
 
-	</style>
-	<title></title>
+        .custom-cursor-2 {
+            cursor: url('cursor2.png') 16 16, auto;
+        }
+
+        .custom-cursor-3 {
+            cursor: url('cursor3.svg'), url('cursor3.png'), pointer;
+        }
+
+        .custom-cursor-4 {
+            cursor: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Ice_age_baby_cursor.svg/1200px-Ice_age_baby_cursor.svg.png'), auto;
+        }
+
+        .custom-cursor-5 {
+            cursor: url('animated-cursor.ani'), auto; /* if you have an animated .ani file */
+        }
+
+        body.custom-cursor-6 {
+            cursor: url('cursor1.png'), auto;
+        }
+
+        .custom-cursor-7 div {
+            cursor: url('cursor2.png'), auto;
+        }
+
+        .custom-cursor-8 {
+            cursor: url('cursor-16.png') 8 8, auto;
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .custom-cursor-8 {
+                cursor: url('cursor-32.png') 16 16, auto;
+            }
+        }
+
+        .custom-cursor-9{
+            cursor: url('cursor1.png'), crosshair;
+        }
+
+        .custom-cursor-10{
+          cursor: url('./cursor1.png'), auto;
+        }
+
+    </style>
 </head>
-<body>
-	
+<body class="custom-cursor-6">
+
+    <div class="custom-cursor-1">This text has custom cursor 1.</div>
+    <div class="custom-cursor-2">This text has custom cursor 2 with hotspot.</div>
+    <div class="custom-cursor-3">This text has multiple fallback cursors.</div>
+    <div class="custom-cursor-4">This text uses a cursor from a web URL.</div>
+    <div class="custom-cursor-5">This text has an animated cursor.</div>
+
+    <div class="custom-cursor-7">
+        <div>This div has a nested div with a custom cursor.</div>
+    </div>
+    <div class="custom-cursor-8">This div changes cursor size based on pixel density.</div>
+    <div class="custom-cursor-9">This div has a custom cursor with a standard cursor fallback.</div>
+    <div class="custom-cursor-10">This div uses relative pathing.</div>
+
+    <p>Normal text with default cursor.</p>
+
+    <p>
+        <strong style="border: none">Note:</strong> Make sure you have the cursor image files (cursor1.png, cursor2.png, cursor3.svg, cursor-16.png, cursor-32.png, animated-cursor.ani). If you are using web urls, the images must be available at the given url.
+    </p>
+
 </body>
 </html>
